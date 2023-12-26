@@ -22,6 +22,7 @@
  * @copyright   2023 Tomás Gaete<togaete@alumnos.uai.cl>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+require_once('../../config.php');
 
 defined('MOODLE_INTERNAL') || die();
 
