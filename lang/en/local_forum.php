@@ -25,5 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['forum'] = 'instrucciones';
-$string['pluginname'] = 'forum';
+//$string['forum'] = "instrucciones";
+$string['pluginname'] = "Forum";
+$string['titulo'] = "This is where the content of the forum will be displayed!";
