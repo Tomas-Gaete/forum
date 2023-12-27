@@ -28,3 +28,5 @@ defined('MOODLE_INTERNAL') || die();
 //$string['forum'] = "instrucciones";
 $string['pluginname'] = "Forum";
 $string['titulo'] = "This is where the content of the forum will be displayed!";
+$string['x'] = "This is an example of extra strings for the plugin";
+
