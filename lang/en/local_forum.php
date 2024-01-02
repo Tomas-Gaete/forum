@@ -29,15 +29,25 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = "Forum";
 $string['titulo'] = "This is where the content of the forum will be displayed!";
 $string['text'] = "This is an example of extra strings for the plugin";
+$string['create_title'] = "Placeholder it should display the name of the course in wich the forum is created";
 $string['B_title'] = "Creating a new forum";
 $string['Button'] = "Create a new forum";
-$string['B_page'] = "This is the text for the button page that should be accessed through a button in index";
+$string['B_page'] = "Follow the instructions to create a new forum!";
 $string['form_title'] = "Title for the forum";
 $string['form_theme'] = "Subject";
 $string['form_intro'] = "Introduction/first take on the subject";
 $string['criteria'] = "Criteria to evaluate";
+$string['form_date'] = "Set a date for the forum to begin and/or end";
 $string['bibliography'] = "Books or extra information about the topic";
 $string['form_Btn'] = "Create forum";
+$string['view_title'] = "Created forums";
+$string['view_info'] = "info dump";
+$string['view_button'] = "Return to create a new forum";
+$string['form_theme_help'] = "The theme should be a general concept of the conversation in the forum";
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@ require_login();
 $PAGE->set_url(new moodle_url('/local/forum/create_forum.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title(get_string('pluginname', 'local_forum'));
-$PAGE->set_heading(get_string('pluginname', 'local_forum'));
+$PAGE->set_heading(get_string('create_title', 'local_forum'));
 
 
 class simplehtml_form extends moodleform {
@@ -18,12 +18,16 @@ class simplehtml_form extends moodleform {
 
         // Add elements to your form.
         $mform->addElement('text', 'name', get_string('form_title', 'local_forum'));
-        $mform->addElement('text', 'name', get_string('form_theme', 'local_forum'));
+        $mform->addElement('text', 'theme', get_string('form_theme', 'local_forum'));
+        $mform->addHelpButton('theme', 'form_theme_help', 'local_forum');//no crear obligación pq aun no sirve el manejo de los datos
+        //$mform->addRule('theme', get_string('required'), 'required', null, 'client');
         $mform->addElement('textarea', 'introduction', get_string('form_intro', 'local_forum'), 'wrap="virtual" rows="10" cols="10"');
         $mform->addElement('text', 'name', get_string('criteria', 'local_forum'));
         $mform->addElement('text', 'name', get_string('bibliography', 'local_forum'));
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
         $mform->addElement('date_selector', 'assesstimefinish', get_string('to'));
+        $mform->addElement('filepicker', 'attachment', get_string('form_date', 'local_forum'), null, array('accepted_types' => '*'));
+
 
         //$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
 
@@ -51,7 +55,7 @@ if ($mform->is_cancelled()) {
     // Handle form submission data
     // You can process the form data here
     // Redirect or display a message based on your needs
-    redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
+    redirect(new moodle_url('/local/forum/view_forums.php'));; // Redirect to the main page, adjust the URL as needed
 }
 
 $templatecontext = array(
