@@ -7,7 +7,7 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title(get_string('pluginname', 'local_forum'));
 $PAGE->set_heading(get_string('pluginname', 'local_forum'));
 
-$myCustomURL = new moodle_url('/local/forum/boton.php', array('id' => 2)); // Redirects to course with id 2
+$myCustomURL = new moodle_url('/local/forum/create_forum.php'); // array('id' => 2) Redirects to course with id 2
 $templatecontext = array(
     'main' => true,    
 );

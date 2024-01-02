@@ -29,8 +29,14 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = "Forum";
 $string['titulo'] = "This is where the content of the forum will be displayed!";
 $string['text'] = "This is an example of extra strings for the plugin";
-$string['B_title'] = "Boton";
-$string['Button'] = "This is the text for the button";
+$string['B_title'] = "Creating a new forum";
+$string['Button'] = "Create a new forum";
 $string['B_page'] = "This is the text for the button page that should be accessed through a button in index";
+$string['form_title'] = "Subject";
+$string['form_intro'] = "Introduction/first take on the subject";
+$string['criteria'] = "Criteria to evaluate";
+$string['bibliography'] = "Books or extra information about the topic";
+$string['form_Btn'] = "Create forum";
+
 
 
