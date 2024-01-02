@@ -37,6 +37,13 @@ function xmldb_local_forum_upgrade($oldversion) {
     global $DB;
 
     $dbman = $DB->get_manager();
+    
+    if ($oldversion < 2016122701) {
+        $table = new xmldb_table('forum_data');
+        
+        $table-> add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table-> add_field('tema',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+    }
 
     // For further information please read {@link https://docs.moodle.org/dev/Upgrade_API}.
     //
