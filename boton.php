@@ -7,10 +7,9 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title(get_string('pluginname', 'local_forum'));
 $PAGE->set_heading(get_string('pluginname', 'local_forum'));
 
+$templatecontext = array(
+    'Btn' => true,
+);
 echo $OUTPUT->header();
-echo '<div class="content">
-<h2>' . get_string('B_title', 'local_forum') . '</h2>
-
-<p>'. get_string('B_page', 'local_forum').' </p>
-</div>';
+echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
 echo $OUTPUT->footer();

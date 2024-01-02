@@ -8,13 +8,12 @@ $PAGE->set_title(get_string('pluginname', 'local_forum'));
 $PAGE->set_heading(get_string('pluginname', 'local_forum'));
 
 $myCustomURL = new moodle_url('/local/forum/boton.php', array('id' => 2)); // Redirects to course with id 2
+$templatecontext = array(
+    'main' => true,    
+);
 
 echo $OUTPUT->header();
-echo '<div class="content">
-<h2>' . get_string('titulo', 'local_forum') . '</h2>
-
-<p>'. get_string('text', 'local_forum').' </p>
-</div>';
+echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
 echo $OUTPUT->single_button($myCustomURL, get_string('Button', 'local_forum'));
 //echo html_writer::link($myCustomURL, get_string('gotocourse', 'local_yourplugin')); forma para generar hyperlinks generica
 
