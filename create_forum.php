@@ -18,6 +18,7 @@ class simplehtml_form extends moodleform {
 
         // Add elements to your form.
         $mform->addElement('text', 'name', get_string('form_title', 'local_forum'));
+        $mform->addElement('text', 'name', get_string('form_theme', 'local_forum'));
         $mform->addElement('textarea', 'introduction', get_string('form_intro', 'local_forum'), 'wrap="virtual" rows="10" cols="10"');
         $mform->addElement('text', 'name', get_string('criteria', 'local_forum'));
         $mform->addElement('text', 'name', get_string('bibliography', 'local_forum'));
@@ -45,12 +46,12 @@ class simplehtml_form extends moodleform {
 $mform = new simplehtml_form();
 if ($mform->is_cancelled()) {
     // Handle cancellation
-    redirect(new moodle_url('/index.php')); // Redirect to the main page, adjust the URL as needed
+    redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
 } elseif ($data = $mform->get_data()) {
     // Handle form submission data
     // You can process the form data here
     // Redirect or display a message based on your needs
-    redirect(new moodle_url('/index.php')); // Redirect to the main page, adjust the URL as needed
+    redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
 }
 
 $templatecontext = array(
