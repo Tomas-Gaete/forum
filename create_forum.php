@@ -17,9 +17,9 @@ class simplehtml_form extends moodleform {
         $mform = $this->_form; // Don't forget the underscore!
 
         // Add elements to your form.
-        $mform->addElement('text', 'name', get_string('form_title', 'local_forum'));
+        $mform->addElement('text', 'name_1', get_string('form_title', 'local_forum'));
         $mform->addElement('text', 'theme', get_string('form_theme', 'local_forum'));
-        $mform->addHelpButton('theme', 'form_theme_help', 'local_forum');//no crear obligación pq aun no sirve el manejo de los datos
+        //$mform->addHelpButton('theme', 'form_theme_help', 'local_forum');//no crear obligación pq aun no sirve el manejo de los datos
         //$mform->addRule('theme', get_string('required'), 'required', null, 'client');
         $mform->addElement('textarea', 'introduction', get_string('form_intro', 'local_forum'), 'wrap="virtual" rows="10" cols="10"');
         $mform->addElement('text', 'name', get_string('criteria', 'local_forum'));
@@ -27,7 +27,7 @@ class simplehtml_form extends moodleform {
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
         $mform->addElement('date_selector', 'assesstimefinish', get_string('to'));
         $mform->addElement('filepicker', 'attachment', get_string('form_date', 'local_forum'), null, array('accepted_types' => '*'));
-
+        
 
         //$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
 
@@ -35,10 +35,18 @@ class simplehtml_form extends moodleform {
 
         $this->add_action_buttons();
         // Set type of element.
-        $mform->setType('email', PARAM_NOTAGS);
-
-        // Default value.
-        $mform->setDefault('email', 'Please enter email');
+        function submit($data, $files) {
+            // Perform database operations here
+            global $DB;
+    
+            $forum_data = new stdClass();
+            $forum_data->Title = $data->name_1;
+            $forum_data->Theme = $data->theme;
+        //$mform->setType('email', PARAM_NOTAGS);
+        //$mform->setDefault('email', 'Please enter email');
+        $DB->insert_record('forum_data', $forum_data);
+        redirect(new moodle_url('/local/forum/view_forums.php'));
+        }
     }
 
     // Custom validation should be added here.
