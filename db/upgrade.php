@@ -47,8 +47,8 @@ function xmldb_local_forum_upgrade($oldversion) {
         $table-> add_field('criteria',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
         $table-> add_field('info',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
         //$table-> add_field('archive',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('start_date',XMLDB_TYPE_DATETIME, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('end_date',XMLDB_TYPE_DATETIME, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('start_date',XMLDB_TYPE_INTEGER, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('end_date',XMLDB_TYPE_INTEGER, '45', null, XMLDB_NOTNULL, null, null);
     }
 
     // For further information please read {@link https://docs.moodle.org/dev/Upgrade_API}.
