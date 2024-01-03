@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="local/forum/db" VERSION="2024010305" COMMENT="Saves info about the created forums"
+<XMLDB PATH="local/forum/db" VERSION="2024010308" COMMENT="Saves info about the created forums"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -10,6 +10,12 @@
         <FIELD NAME="title" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
         <FIELD NAME="theme" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
         <FIELD NAME="year" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="intro" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>      
+        <FIELD NAME="criteria" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="info" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>      
+        <FIELD NAME="from" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="to" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="extra" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
