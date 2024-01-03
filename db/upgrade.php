@@ -38,11 +38,16 @@ function xmldb_local_forum_upgrade($oldversion) {
 
     $dbman = $DB->get_manager();
     
-    if ($oldversion < 2016122701) {
+    if ($oldversion < 2024010302) {
         $table = new xmldb_table('forum_data');
         
         $table-> add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
-        $table-> add_field('tema',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('title',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('theme',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('criteria',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('info',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('from',XMLDB_TYPE_DATETIME, '45', null, XMLDB_NOTNULL, null, null);
+        $table-> add_field('to',XMLDB_TYPE_DATETIME, '45', null, XMLDB_NOTNULL, null, null);
     }
 
     // For further information please read {@link https://docs.moodle.org/dev/Upgrade_API}.
