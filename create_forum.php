@@ -26,7 +26,7 @@ class simplehtml_form extends moodleform {
         $mform->addElement('text', 'name', get_string('bibliography', 'local_forum'));
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
         $mform->addElement('date_selector', 'assesstimefinish', get_string('to'));
-        $mform->addElement('filepicker', 'attachment', get_string('form_date', 'local_forum'), null, array('accepted_types' => '*'));
+        $mform->addElement('filepicker', 'attachment', get_string('form_archive', 'local_forum'), null, array('accepted_types' => '*'));
         
 
         //$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
