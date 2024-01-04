@@ -38,23 +38,32 @@ function xmldb_local_forum_upgrade($oldversion) {
 
     $dbman = $DB->get_manager();
     
-    if ($oldversion < 2024010400) {
-        $table = new xmldb_table('forum_data');
-        
-        $table-> add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
-        $table-> add_field('title',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('theme',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('criteria',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('info',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('start_date',XMLDB_TYPE_INTEGER, '45', null, XMLDB_NOTNULL, null, null);
-        $table-> add_field('end_date',XMLDB_TYPE_INTEGER, '45', null, XMLDB_NOTNULL, null, null);
-        //$table-> add_field('archive',XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, null);
-    }
+    if ($oldversion < 2024010410) {
 
-    // For further information please read {@link https://docs.moodle.org/dev/Upgrade_API}.
-    //
-    // You will also have to create the db/install.xml file by using the XMLDB Editor.
-    // Documentation for the XMLDB Editor can be found at {@link https://docs.moodle.org/dev/XMLDB_editor}.
+        // Define field start_date to be added to forum_data.
+        $table = new xmldb_table('forum_data');
+        $field = new xmldb_field('start_date', XMLDB_TYPE_INTEGER, '11', null, null, null, '0', 'info');
+
+        // Conditionally launch add field start_date.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+        // Define field end_date to be added to forum_data.
+        $table = new xmldb_table('forum_data');
+        $field = new xmldb_field('end_date', XMLDB_TYPE_INTEGER, '11', null, null, null, '0', 'start_date');
+
+        // Conditionally launch add field end_date.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024010410, 'local', 'forum');
+    }
 
     return true;
 }
+// For further information please read {@link https://docs.moodle.org/dev/Upgrade_API}.
+    //
+    // You will also have to create the db/install.xml file by using the XMLDB Editor.
+    // Documentation for the XMLDB Editor can be found at {@link https://docs.moodle.org/dev/XMLDB_editor}.

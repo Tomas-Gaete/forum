@@ -51,8 +51,6 @@ class simplehtml_form extends moodleform {
         //$forum_data->archive = $data->info;
         $forum_data->start_date = $data->assesstimestart;
         $forum_data->end_date = $data->assesstimefinish;
-        echo "Start Date: $forum_data->start_date<br>";
-        echo "End Date: $forum_data->end_date<br>";
 
     $DB->insert_record('forum_data', $forum_data);
     redirect(new moodle_url('/local/forum/view_forums.php'));
