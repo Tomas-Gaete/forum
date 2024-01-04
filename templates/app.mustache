@@ -17,7 +17,7 @@
 {{/Btn}}
 
 {{#view}}
-<div class="forum-content">
+<div class="container forum-content">
     <h2>{{#str}}view_title, local_forum{{/str}}</h2>
     <br>
     <div class="forum-list">
@@ -30,11 +30,11 @@
                     <p class="forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
                     <p class="forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
                     <p class="forum-info"> {{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
-                    
-                    <p>{{#str}} input_answer, local_forum {{/str}}</p>
-                    <textarea id="forumTextArea" rows="4" cols="50"></textarea>
-                    
-                </div> 
+
+                    <label for="forumTextArea"></label>
+                    <textarea class="form-control" id="forumTextArea" rows="4" placeholder="{{#str}} input_answer, local_forum {{/str}}"></textarea>
+
+                </div>
                 <br>
             </div>
             {{/forums}}
@@ -42,3 +42,4 @@
     </div>
 </div>
 {{/view}}
+
