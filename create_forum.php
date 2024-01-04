@@ -25,7 +25,7 @@ class simplehtml_form extends moodleform {
         $mform->addElement('text', 'crit', get_string('criteria', 'local_forum'));
         $mform->addElement('text', 'info', get_string('bibliography', 'local_forum'));
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('start_date','local_forum'));
-        $mform->addElement('date_selector', 'assesstimefinish', get_string('end_date','local_forum'));
+        $mform->addElement('date_time_selector', 'assesstimefinish', get_string('end_date','local_forum'));
         $mform->addElement('filepicker', 'attachment', get_string('form_archive', 'local_forum'), null, array('accepted_types' => '*'));
         
 
@@ -39,6 +39,8 @@ class simplehtml_form extends moodleform {
     function submit($data, $files) {
         // Perform database operations here
         global $DB;
+        //$mform->setType('email', PARAM_NOTAGS);
+        //$mform->setDefault('email', 'Please enter email');
 
         $forum_data = new stdClass();
         $forum_data->title = $data->title;
@@ -49,8 +51,9 @@ class simplehtml_form extends moodleform {
         //$forum_data->archive = $data->info;
         $forum_data->start_date = $data->assesstimestart;
         $forum_data->end_date = $data->assesstimefinish;
-    //$mform->setType('email', PARAM_NOTAGS);
-    //$mform->setDefault('email', 'Please enter email');
+        echo "Start Date: $forum_data->start_date<br>";
+        echo "End Date: $forum_data->end_date<br>";
+
     $DB->insert_record('forum_data', $forum_data);
     redirect(new moodle_url('/local/forum/view_forums.php'));
     }
