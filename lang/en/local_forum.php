@@ -46,6 +46,10 @@ $string['view_button'] = "Return to create a new forum";
 $string['form_theme_help'] = "The theme should be a general concept of the conversation in the forum";
 $string['start_date'] = "Starting date for the activity";
 $string['end_date'] = "Due date for the activity";
+$string['form_intro_view'] = "Introduction";
+$string['input_answer'] = "Enter an answer";
+
+
 
 //$string['form_id'] = "Add the id number of the forum";
 

@@ -17,9 +17,28 @@
 {{/Btn}}
 
 {{#view}}
-<div class="content">
-<h2>{{#str}} view_title, local_forum {{/str}}</h2>
-
-<p>{{#str}} view_info, local_forum {{/str}} </p>
+<div class="forum-content">
+    <h2>{{#str}}view_title, local_forum{{/str}}</h2>
+    <br>
+    <div class="forum-list">
+        <div class="row">
+            {{#forums}}
+            <div class="col-md-4">
+                <div class="forum-entry">
+                    <h3 class="forum-title">{{title}}</h3>
+                    <p class="forum-theme">{{#str}} form_theme, local_forum {{/str}}: {{theme}}</p>
+                    <p class="forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
+                    <p class="forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
+                    <p class="forum-info"> {{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
+                    
+                    <p>{{#str}} input_answer, local_forum {{/str}}</p>
+                    <textarea id="forumTextArea" rows="4" cols="50"></textarea>
+                    
+                </div> 
+                <br>
+            </div>
+            {{/forums}}
+        </div>
+    </div>
 </div>
 {{/view}}

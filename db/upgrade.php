@@ -60,6 +60,26 @@ function xmldb_local_forum_upgrade($oldversion) {
         // Forum savepoint reached.
         upgrade_plugin_savepoint(true, 2024010410, 'local', 'forum');
     }
+    if ($oldversion<2024010411){
+        $table = new xmldb_table('input_data');
+
+        // Adding fields to table input_data.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('answer', XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, 'no answer provided');
+
+        // Adding keys to table input_data.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        // Conditionally launch create table for input_data.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024010411, 'local', 'forum');
+
+
+    }
 
     return true;
 }
