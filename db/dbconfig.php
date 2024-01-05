@@ -1,24 +1,25 @@
 <?php
-$database_host = '127.0.0.1'; // The local end of your SSH tunnel
-$database_port = '3306';      // The local port of your SSH tunnel
-$database_name = 'moodle';
-$database_user = 'moodle';
-$database_password = 'moodle';
+$host = '127.0.0.1';
+$port = 3306;  // Default MySQL port
+$dbname = 'moodle';
+$user = 'moodle';
+$pass = 'moodle';
 
-// SSH tunnel parameters
-$ssh_host = 'localhost';
-$ssh_port = '22';             // SSH port
-$ssh_user = 'devel';
-$ssh_password = '';
+try {
+    $dsn = "mysql:host=$host;port=$port;dbname=$dbname";
+    $conn = new PDO($dsn, $user, $pass);
 
-$ssh_connection = ssh2_connect($ssh_host, $ssh_port);
-if (ssh2_auth_password($ssh_connection, $ssh_user, $ssh_password)) {
-    // Establish the SSH tunnel
-    ssh2_tunnel($ssh_connection, $database_host, $database_port);
-}
+    // Set PDO to throw exceptions on errors
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$conn = new mysqli($database_host, $database_user, $database_password, $database_name, $database_port);
+    // Now you can use $conn for your database operations
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // Example: Fetch all records from a table
+    $stmt = $conn->query("SELECT * FROM mdl_input_data");
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    print_r($results);
+
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
