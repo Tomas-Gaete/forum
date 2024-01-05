@@ -80,6 +80,27 @@ function xmldb_local_forum_upgrade($oldversion) {
 
 
     }
+    if ($oldversion < 2024010501) {
+
+        // Define field forum_id to be added to input_data.
+        $table = new xmldb_table('input_data');
+        $field = new xmldb_field('forum_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, null);
+        $field_2 = new xmldb_field('submit_time', XMLDB_TYPE_INTEGER, '11', null, XMLDB_NOTNULL, null, '0', null);
+
+
+
+        // Conditionally launch add field forum_id.
+        if (!$dbman->field_exists($table, $field,$field_2)) {
+            $dbman->add_field($table, $field);
+            $dbman->add_field($table, $field_2);
+        }
+        
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024010501, 'local', 'forum');
+    }
+
+
 
     return true;
 }

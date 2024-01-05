@@ -20,6 +20,7 @@ function render_forum_data($data) {
     $output .= 'intro: ' . htmlspecialchars($data->intro) . '<br>';
     $output .= 'criteria: ' . htmlspecialchars($data->criteria) . '<br>';
     $output .= 'info: ' . htmlspecialchars($data->info) . '<br>';
+    $output .= 'id: ' . htmlspecialchars($data->id) . '<br>';
 
 
     return $output;
@@ -35,11 +36,23 @@ function render_all_forum_data($all_data) {
             $forum->intro = htmlspecialchars($data->intro);
             $forum->criteria = htmlspecialchars($data->criteria);
             $forum->info = htmlspecialchars($data->info);
+            $forum->id = htmlspecialchars($data->id);
             // Add any other fields you need here
-
             $forums[] = $forum;
+            $forums_id[] =htmlspecialchars($data->id);
         }
     }
 
     return $forums;
+}
+function get_forum_ids($all_data) {
+    $forum_ids = [];
+
+    if (!empty($all_data)) {
+        foreach ($all_data as $data) {
+            $forum_ids[] = htmlspecialchars($data->id);
+        }
+    }
+
+    return $forum_ids;
 }

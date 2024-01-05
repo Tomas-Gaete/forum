@@ -30,10 +30,16 @@
                     <p class="forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
                     <p class="forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
                     <p class="forum-info"> {{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
+                    <p class="forum-info"> vista temporal del id: {{id}}</p>
 
                     <label for="forumTextArea"></label>
-                    <textarea class="form-control" id="forumTextArea" rows="4" placeholder="{{#str}} input_answer, local_forum {{/str}}"></textarea>
-                    <button type="submit" class="btn btn-primary mt-3">{{#str}}submit_button, local_forum{{/str}}</button>
+                    <input type="hidden" name="forum_id" value={{id}}>
+                    <textarea class="form-control" name="answer" id="answer" rows="4" placeholder="{{#str}} input_answer, local_forum {{/str}}"></textarea>
+                    <button onclick="submitAnswer(event)"class="btn btn-primary mt-3">{{#str}}submit_button, local_forum{{/str}}
+                    </button>
+                    <!--<button type="submit" class="btn btn-primary mt-3" id="submitBtn" forum_id="{{id}}"
+                     onclick="submitAnswer(event)"> {{#str}}submit_button, local_forum{{/str}}</button>-->
+                     
 
                 </div>
                 <br>

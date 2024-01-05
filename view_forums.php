@@ -48,5 +48,6 @@ $templatecontext = array(
 
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
+echo '<script src="forum/ajax/forum_answer.js"></script>';
 echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
 echo $OUTPUT->footer();
