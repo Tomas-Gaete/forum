@@ -48,6 +48,8 @@ $string['start_date'] = "Starting date for the activity";
 $string['end_date'] = "Due date for the activity";
 $string['form_intro_view'] = "Introduction";
 $string['input_answer'] = "Enter an answer";
+$string['submit_button'] = "Send answer";
+
 
 
 
