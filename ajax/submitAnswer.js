@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function submitAnswer(event) {
     
-    event.preventDefault();
 
     var forumId = event.currentTarget.getAttribute('name'); // Change forum_id to name
     var inputData = document.getElementById('answer').value; // Remove space after 'answer'

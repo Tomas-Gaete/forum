@@ -31,16 +31,10 @@
                     <p class="forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
                     <p class="forum-info"> {{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
                     <p class="forum-info"> vista temporal del id: {{id}}</p>
-
-                    <label for="forumTextArea"></label>
-                    <input type="hidden" name="forum_id" value={{id}}>
-                    <textarea class="form-control" name="answer" id="answer" rows="4" placeholder="{{#str}} input_answer, local_forum {{/str}}"></textarea>
-                    <button id="submitAnswerButton" class="btn btn-primary mt-3">{{#str}}submit_button, local_forum{{/str}}</button>-->
-                    <!--<div id="secondFormContainer_{{id}}"></div>-->
-                    
-                     
-
                 </div>
+                <div class="forum-form">
+                        {{input_form}} <!-- Assuming input_form is a property containing the associated form instance -->
+                    </div>
                 <br>
             </div>
             {{/forums}}
