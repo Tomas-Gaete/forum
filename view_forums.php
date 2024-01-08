@@ -2,7 +2,6 @@
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
 require_once(__DIR__ . '/locallib.php');
-require_once(__DIR__ . '/ajax/forum_answers.php');
 //require_once(__DIR__ . '/ajax/submitAnswer.js'); 
 
 global $PAGE, $OUTPUT, $DB;
@@ -14,7 +13,14 @@ $PAGE->set_heading(get_string('create_title', 'local_forum'));
 
 
 $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Redirects to course with id 2
-
+function submit_id(){
+    global $DB;
+    $all_forum_data = get_all_forum_data();
+    $forums = render_all_forum_data($all_forum_data);
+    $forum_ids = get_forum_ids($all_forum_data);
+    $forum_id = $forum_ids[count($forum_ids)-1];
+    return $forum_id;
+}
 class simplehtml_input extends moodleform {
     // Add elements to form.
     public function definition() {
@@ -36,7 +42,7 @@ class simplehtml_input extends moodleform {
 
         $input_data = new stdClass();
         $input_data->answer = $data->answer;
-        $input_data->forum_id =$data->forum_id ;
+        $input_data->forum_id =submit_id() ;
         $input_data->submit_time = time();
 
         
@@ -64,7 +70,7 @@ $mform = new simplehtml_input();
     } elseif ($data = $mform->get_data()) {
         // Handle form submission data
         // You can process the form data here
-        $data->$forum_id = $forums['id'];
+        //$data->$forum_id = $forums['id'];
         $mform->submit($data, null);
         redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
     }
