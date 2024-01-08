@@ -19,19 +19,10 @@ $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Red
 class simplehtml_input extends moodleform {
     // Add elements to form.
     public function definition() {
-        // A reference to the form is stored in $this->form.
-        // A common convention is to store it in a variable, such as `$mform`.
-        $minput = $this->_form; // Don't forget the underscore!
-        // Add elements to your form.
+
+        $minput = $this->_form; 
+
         $minput->addElement('text', 'answer', get_string('input_answer', 'local_forum'));
-        
-
-        
-
-        //$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
-
-        //$mform->addElement('button', 'intro', get_string('form_Btn', 'local_forum'));
-
         $this->add_action_buttons();
         // Set type of element.
     }
@@ -55,51 +46,19 @@ class simplehtml_input extends moodleform {
     }
 }
 
-   $m_try = new simplehtml_input();
-    if ($m_try->is_cancelled()) {
+   $mform = new simplehtml_input();
+    if ($mform->is_cancelled()) {
         // Handle cancellation
         redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
-    } elseif ($data = $m_try->get_data()) {
+    } elseif ($data = $mform->get_data()) {
         // Handle form submission data
         // You can process the form data here
-        $m_try->submit($data, null);
+        $mform->submit($data, null);
         redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
     }
 
-$forums_with_forms = [];
-
-foreach ($all_forum_data as $forum) {
-    // Render the original form
-    $mform = new simplehtml_form();
-    $mform->set_data(['forum_id' => $forum->id]);
-    $minput = new simplehtml_input();
-    ob_start();
-    $mform->display();
-    //$minput->display();
-    $form_html = ob_get_clean();
-    $forum->form_html = $form_html;
-
-    $forums_with_forms[] = $forum;
-}
-
-
-$inputs = [];
-foreach ($forums_with_forms as $forum) {
-    // Create the form for each forum
-    $minput = new simplehtml_input();
-    
-    // Optionally set data if needed
-    // $minput->set_data(['forum_id' => $forum->forum_id]);
-
-    // Render the form to HTML
-    ob_start();
-    $minput->render();
-    $form_html = ob_get_clean();
-
-    // Store the HTML form in the 'input_form' property of the forum
-    $forum->input_form = $form_html;
-}
 // Rest of your code for rendering
+$minput = new simplehtml_input();
 
 
 $all_forum_data = get_all_forum_data();
@@ -107,12 +66,11 @@ $forums = render_all_forum_data($all_forum_data);
 $templatecontext = array(
     'view' => true,
     'forums' => $forums,
-    'inputs' => $inputs,
+    'inputs' => $mform->render(),
     
 );
 
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
 echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
-$m_try->display();
 echo $OUTPUT->footer();
