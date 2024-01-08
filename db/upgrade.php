@@ -99,6 +99,32 @@ function xmldb_local_forum_upgrade($oldversion) {
         // Forum savepoint reached.
         upgrade_plugin_savepoint(true, 2024010501, 'local', 'forum');
     }
+    if ($oldversion < 2024010800) {
+
+        // Changing precision of field intro on table forum_data to (1000).
+        $table = new xmldb_table('forum_data');
+        $field = new xmldb_field('intro', XMLDB_TYPE_CHAR, '1000', null, XMLDB_NOTNULL, null, null, 'theme');
+
+        // Launch change of precision for field intro.
+        $dbman->change_field_precision($table, $field);
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024010800, 'local', 'forum');
+    }
+    if ($oldversion < 2024010801) {
+
+        // Changing precision of field answer on table input_data to (1000).
+        $table = new xmldb_table('input_data');
+        $field = new xmldb_field('answer', XMLDB_TYPE_CHAR, '1000', null, XMLDB_NOTNULL, null, null, 'id');
+
+        // Launch change of precision for field answer.
+        $dbman->change_field_precision($table, $field);
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024010801, 'local', 'forum');
+    }
+
+
 
 
 
