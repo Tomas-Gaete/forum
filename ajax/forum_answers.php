@@ -1,9 +1,12 @@
 <?php
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
-require_once(__DIR__ . '/locallib.php');
-require_once(__DIR__ . "/db/dbconfig.php"); // Ensure this path is correct
-
+require_once('../forum/locallib.php');
+require_once( "../forum/db/dbconfig.php");
+global $PAGE, $DB;
+$conn = $DB->get_record_sql('SELECT 1');
+//require_once(__DIR__ . "/forum/ajax/submitAnswer.js"); // Ensure this path is correct
+$PAGE->requires->js(new moodle_url(__DIR__.'/submitAnswer.js'));
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $forum_id = isset($_POST['forum_id']) ? $_POST['forum_id'] : '';
     $answer = isset($_POST['answer']) ? $_POST['answer'] : '';

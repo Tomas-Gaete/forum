@@ -3,6 +3,8 @@ require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
 require_once(__DIR__ . '/locallib.php');
 require_once(__DIR__ . '/db/dbconfig.php');
+require_once(__DIR__ . '/ajax/forum_answers.php');
+//require_once(__DIR__ . '/ajax/submitAnswer.js'); 
 
 global $PAGE, $OUTPUT;
 $PAGE->requires->js(new moodle_url(__DIR__.'/submitAnswer.js'));
@@ -39,20 +41,19 @@ class simplehtml_input extends moodleform {
         //$mform->setType('email', PARAM_NOTAGS);
         //$mform->setDefault('email', 'Please enter email');
 
-        $forum_data = new stdClass();
-        $forum_data->answer = $data->answer;
-        $forum_data->forum_id =$data->forum_id;
+        $input_data = new stdClass();
+        $input_data->answer = $data->answer;
+        $input_data->forum_id =$data->forum_id;
         
 
-    $DB->insert_record('input_data', $forum_data);
-    redirect(new moodle_url('/local/forum/view_forums.php'));
+    $DB->insert_record('input_data', $input_data);
+    redirect(new moodle_url('/local/forum/index.php'));
     }
     // Custom validation should be added here.
     function validation($data, $files) {
         return [];
     }
 }
-$forums_with_forms = [];
 
 $forums_with_forms = [];
 
@@ -74,9 +75,9 @@ foreach ($all_forum_data as $forum) {
         // Handle form submission data
         // You can process the form data here
         $minput->submit($data, null);
-        redirect(new moodle_url('/local/forum/view_forums.php'));; // Redirect to the main page, adjust the URL as needed
+        redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
     }
-    $minput->set_data(['forum_id' => $forum->id]); // If you need to pass forum ID or other data
+    $minput->set_data(['forum_id' => $data->id]); // If you need to pass forum ID or other data
     ob_start();
     $minput->display();
     $input_form_html = ob_get_clean();

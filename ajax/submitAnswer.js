@@ -1,3 +1,4 @@
+import dbconfig from 'forum/db/dbconfig.php';
 document.addEventListener('DOMContentLoaded', (event) => {
     var submitButton = document.getElementById('submitAnswerButton');
     if (submitButton) {
@@ -6,6 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function submitAnswer(event) {
+    
     event.preventDefault();
 
     var forumId = event.currentTarget.getAttribute('name'); // Change forum_id to name
@@ -23,5 +25,6 @@ function submitAnswer(event) {
 
     var params = 'forum_id=' + encodeURIComponent(forumId) + '&answer=' + encodeURIComponent(inputData); // Change forumId to forum_id
     xhr.send(params);
+    redirect(new moodle_url('/local/forum/index.php'));;
 }
 export default submitAnswer();
