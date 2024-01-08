@@ -8,7 +8,12 @@ function get_all_forum_data() {
     global $DB;
     return $DB->get_records('forum_data');
 }
-
+function get_current_user_id(){
+    global $DB;
+    global $USER;
+    $user_id = $USER->id;
+    return $user_id;
+}
 
 function render_all_forum_data($all_data) {
     $forums = [];

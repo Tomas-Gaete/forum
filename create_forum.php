@@ -1,6 +1,8 @@
 <?php
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
+require_once(__DIR__ . '/locallib.php');
+
 global $PAGE, $OUTPUT;
 require_login();
 $PAGE->set_url(new moodle_url('/local/forum/create_forum.php'));
@@ -51,6 +53,8 @@ class simplehtml_form extends moodleform {
         //$forum_data->archive = $data->info;
         $forum_data->start_date = $data->assesstimestart;
         $forum_data->end_date = $data->assesstimefinish;
+        $forum_data->user_id = get_current_user_id();
+
 
     $DB->insert_record('forum_data', $forum_data);
     redirect(new moodle_url('/local/forum/view_forums.php'));

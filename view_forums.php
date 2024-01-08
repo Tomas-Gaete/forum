@@ -21,6 +21,7 @@ function submit_id(){
     $forum_id = $forum_ids[count($forum_ids)-1];
     return $forum_id;
 }
+
 class simplehtml_input extends moodleform {
     // Add elements to form.
     public function definition() {
@@ -31,6 +32,10 @@ class simplehtml_input extends moodleform {
         $mform->setType('forum_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
         $mform->addElement('hidden', 'submit_time', '0');
         $mform->setType('submit_time', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
+        $mform->addElement('hidden', 'user_id', '0');
+        $mform->setType('user_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
+
+
         $this->add_action_buttons();
         // Set type of element.
     }
@@ -42,8 +47,10 @@ class simplehtml_input extends moodleform {
 
         $input_data = new stdClass();
         $input_data->answer = $data->answer;
-        $input_data->forum_id =submit_id() ;
+        $input_data->forum_id =submit_id();
         $input_data->submit_time = time();
+        $input_data->user_id = get_current_user_id();
+
 
         
 
