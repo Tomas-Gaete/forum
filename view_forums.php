@@ -2,12 +2,10 @@
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
 require_once(__DIR__ . '/locallib.php');
-require_once(__DIR__ . '/db/dbconfig.php');
 require_once(__DIR__ . '/ajax/forum_answers.php');
 //require_once(__DIR__ . '/ajax/submitAnswer.js'); 
 
 global $PAGE, $OUTPUT;
-$PAGE->requires->js(new moodle_url(__DIR__.'/submitAnswer.js'));
 require_login();
 $PAGE->set_url(new moodle_url('/local/forum/view_forums.php'));
 $PAGE->set_context(context_system::instance());
@@ -20,9 +18,10 @@ class simplehtml_input extends moodleform {
     // Add elements to form.
     public function definition() {
 
-        $minput = $this->_form; 
-
-        $minput->addElement('text', 'answer', get_string('input_answer', 'local_forum'));
+        $mform = $this->_form; 
+        $mform->addElement('text', 'answer', get_string('input_answer', 'local_forum'));
+        $mform->addElement('hidden', 'forum_id', '0');
+        $mform->setType('forum_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
         $this->add_action_buttons();
         // Set type of element.
     }
@@ -58,7 +57,6 @@ class simplehtml_input extends moodleform {
     }
 
 // Rest of your code for rendering
-$minput = new simplehtml_input();
 
 
 $all_forum_data = get_all_forum_data();
