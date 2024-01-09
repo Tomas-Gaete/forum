@@ -36,10 +36,10 @@ function render_all_forum_data($all_data) {
                 'forum_id' => $data->id
                 // Add any other fields you need here
             ];
-            $id = $data->id;
+            $forum_id = $data->id;
             //$forum_id = $data->id;
             // Assuming simplehtml_input is a form class
-            $to_form = array('my_array' => array('id' => $forum['id'])); 
+            $to_form = array('my_array' => array('id' => $forum['forum_id'])); 
             $mform = new simplehtml_input(null,$to_form);
 
             if ($mform->is_cancelled()) {
@@ -50,6 +50,8 @@ function render_all_forum_data($all_data) {
                 // You can process the form data_form here
                 //$data_form->$forum_id = $forums['id'];
                 //die(var_dump($data_form));
+                //die(var_dump($to_form));
+
                 $mform->submit($data_form, null);
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             }
@@ -66,7 +68,7 @@ class simplehtml_input extends moodleform {
 
         $mform = $this->_form; 
         $mform->addElement('textarea', 'answer', get_string('input_answer', 'local_forum'));
-        $mform->addElement('hidden', 'forum_id', '0');
+        $mform->addElement('hidden', 'forum_id', $this->_customdata['my_array']['id']);
         $mform->setType('forum_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
         $mform->addElement('hidden', 'submit_time', '0');
         $mform->setType('submit_time', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
@@ -85,7 +87,8 @@ class simplehtml_input extends moodleform {
         //die(var_dump($data_form));
         $input_data = new stdClass();
         $input_data->answer = $data_form->answer;
-        $input_data->forum_id = $this->_customdata['my_array']['id'];        
+        $input_data->forum_id = $data_form->forum_id;
+        //die(var_dump($input_data->forum_id)); 
         $input_data->submit_time = time();
         $input_data->user_id = get_current_user_id();
     $DB->insert_record('input_data', $input_data);
