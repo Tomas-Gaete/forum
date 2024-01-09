@@ -24,18 +24,23 @@
         <div class="row">
             {{#forums}}
             <div class="col-md-4">
-                <div class="forum-entry">
-                    <h3 class="forum-title">{{title}}</h3>
-                    <p class="forum-theme">{{#str}} form_theme, local_forum {{/str}}: {{theme}}</p>
-                    <p class="forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
-                    <p class="forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
-                    <p class="forum-info"> {{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
-                </div>
-                <div class="forum-form">
-                        {{{inputs}}} <!-- Assuming input_form is a property containing the associated form instance -->
-                    </div>
-                <br>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title forum-title">{{title}}</h3>
+            <p class="card-text forum-theme">{{#str}} form_theme, local_forum {{/str}}: {{theme}}</p>
+            <p class="card-text forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
+            <p class="card-text forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
+            <p class="card-text forum-info">{{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+                {{{inputs}}} <!-- Assuming input_form is a property containing the associated form instance -->
             </div>
+        </div>
+    </div>
+    <br>
+</div>
+
             {{/forums}}
         </div>
     </div>

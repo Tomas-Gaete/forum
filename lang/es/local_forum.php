@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 //$string['forum'] = "instrucciones";
 $string['pluginname'] = "Foro";
 $string['titulo'] = "¡Aquí se mostrará el contenido del foro!";
-$string['text'] = "Este es un ejemplo de los textos adicionales para el complemento";
+$string['text'] = "Este es un ejemplo de los textos adicionales para el plugin de foros";
 $string['create_title'] = "Aquí se mostrará el nombre del curso en el que se crea el foro";
 $string['B_title'] = "Creando un nuevo foro";
 $string['Button'] = "Crear un nuevo foro";
