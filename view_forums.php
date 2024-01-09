@@ -50,10 +50,6 @@ class simplehtml_input extends moodleform {
         $input_data->forum_id =submit_id();
         $input_data->submit_time = time();
         $input_data->user_id = get_current_user_id();
-
-
-        
-
     $DB->insert_record('input_data', $input_data);
     redirect(new moodle_url('/local/forum/index.php'));
     }
@@ -69,23 +65,10 @@ class simplehtml_input extends moodleform {
 $all_forum_data = get_all_forum_data();
 $forums = render_all_forum_data($all_forum_data);
 
-$mform = new simplehtml_input();
-
-    if ($mform->is_cancelled()) {
-        // Handle cancellation
-        redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
-    } elseif ($data = $mform->get_data()) {
-        // Handle form submission data
-        // You can process the form data here
-        //$data->$forum_id = $forums['id'];
-        $mform->submit($data, null);
-        redirect(new moodle_url('/local/forum/index.php'));; // Redirect to the main page, adjust the URL as needed
-    }
 
 $templatecontext = array(
     'view' => true,
     'forums' => $forums,
-    'inputs' => $mform->render(),
     
 );
 
