@@ -34,10 +34,8 @@ function render_all_forum_data($all_data) {
                 'info' => htmlspecialchars($data->info),
                 'id' => htmlspecialchars($data->id),
                 'forum_id' => $data->id
-                // Add any other fields you need here
             ];
             $forum_id = $data->id;
-            //$forum_id = $data->id;
             // Assuming simplehtml_input is a form class
             $to_form = array('my_array' => array('id' => $forum['forum_id'])); 
             $mform = new simplehtml_input(null,$to_form);
@@ -47,16 +45,12 @@ function render_all_forum_data($all_data) {
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             } elseif ($data_form = $mform->get_data()) {
                 // Handle form submission data_form
-                // You can process the form data_form here
-                //$data_form->$forum_id = $forums['id'];
-                //die(var_dump($data_form));
-                //die(var_dump($to_form));
-
+                // You can process the form data_form here 
                 $mform->submit($data_form, null);
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             }
 
-            $forum['inputs'] = $mform->render(); // Add the form to the forum data
+            $forum['inputs'] = $mform->render(); 
             $forums[] = $forum;
         }
     }
