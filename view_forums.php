@@ -13,6 +13,8 @@ $PAGE->set_heading(get_string('create_title', 'local_forum'));
 
 
 $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Redirects to course with id 2
+$myCustomURL2 = new moodle_url('/local/forum/final_view.php'); // array('id' => 2) Redirects to course with id 2
+
 
 
 $all_forum_data = get_all_forum_data();
@@ -69,4 +71,5 @@ $templatecontext = array(
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
 echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
+echo $OUTPUT->single_button($myCustomURL2, get_string('view_button', 'local_forum'));
 echo $OUTPUT->footer();
