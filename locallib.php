@@ -15,6 +15,12 @@ function get_current_user_id(){
     return $user_id;
 }
 
+/*function get_forum_id($x){
+    global $DB;
+    $forum_id = $x;
+    return $forum_id;
+}*/
+
 function render_all_forum_data($all_data) {
     $forums = [];
 
@@ -26,21 +32,25 @@ function render_all_forum_data($all_data) {
                 'intro' => htmlspecialchars($data->intro),
                 'criteria' => htmlspecialchars($data->criteria),
                 'info' => htmlspecialchars($data->info),
-                'id' => htmlspecialchars($data->id)
+                'id' => htmlspecialchars($data->id),
+                'forum_id' => $data->id
                 // Add any other fields you need here
             ];
-
+            $id = $data->id;
+            //$forum_id = $data->id;
             // Assuming simplehtml_input is a form class
-            $mform = new simplehtml_input();
+            $to_form = array('my_array' => array('id' => $forum['id'])); 
+            $mform = new simplehtml_input(null,$to_form);
 
             if ($mform->is_cancelled()) {
                 // Handle cancellation
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
-            } elseif ($data = $mform->get_data()) {
-                // Handle form submission data
-                // You can process the form data here
-                //$data->$forum_id = $forums['id'];
-                $mform->submit($data, null);
+            } elseif ($data_form = $mform->get_data()) {
+                // Handle form submission data_form
+                // You can process the form data_form here
+                //$data_form->$forum_id = $forums['id'];
+                //die(var_dump($data_form));
+                $mform->submit($data_form, null);
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             }
 
@@ -49,6 +59,42 @@ function render_all_forum_data($all_data) {
         }
     }
         return $forums;
+}
+class simplehtml_input extends moodleform {
+    // Add elements to form.
+    public function definition() {
+
+        $mform = $this->_form; 
+        $mform->addElement('textarea', 'answer', get_string('input_answer', 'local_forum'));
+        $mform->addElement('hidden', 'forum_id', '0');
+        $mform->setType('forum_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
+        $mform->addElement('hidden', 'submit_time', '0');
+        $mform->setType('submit_time', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
+        $mform->addElement('hidden', 'user_id', '0');
+        $mform->setType('user_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
+
+
+        $this->add_action_buttons();
+        // Set type of element.
+    }
+    function submit($data_form, $files) {
+        // Perform database operations here
+        global $DB;
+        //$mform->setType('email', PARAM_NOTAGS);
+        //$mform->setDefault('email', 'Please enter email');
+        //die(var_dump($data_form));
+        $input_data = new stdClass();
+        $input_data->answer = $data_form->answer;
+        $input_data->forum_id = $this->_customdata['my_array']['id'];        
+        $input_data->submit_time = time();
+        $input_data->user_id = get_current_user_id();
+    $DB->insert_record('input_data', $input_data);
+    redirect(new moodle_url('/local/forum/index.php'));
+    }
+    // Custom validation should be added here.
+    function validation($data_form, $files) {
+        return [];
+    }
 }
 function get_forum_ids($all_data) {
     $forum_ids = [];

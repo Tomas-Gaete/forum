@@ -13,15 +13,11 @@ $PAGE->set_heading(get_string('create_title', 'local_forum'));
 
 
 $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Redirects to course with id 2
-function submit_id(){
-    global $DB;
-    $all_forum_data = get_all_forum_data();
-    $forums = render_all_forum_data($all_forum_data);
-    $forum_ids = get_forum_ids($all_forum_data);
-    $forum_id = $forum_ids[count($forum_ids)-1];
-    return $forum_id;
-}
 
+
+$all_forum_data = get_all_forum_data();
+$forums = render_all_forum_data($all_forum_data);
+/*
 class simplehtml_input extends moodleform {
     // Add elements to form.
     public function definition() {
@@ -39,7 +35,7 @@ class simplehtml_input extends moodleform {
         $this->add_action_buttons();
         // Set type of element.
     }
-    function submit($data, $files) {
+    function submit($data, $files,$forum_id) {
         // Perform database operations here
         global $DB;
         //$mform->setType('email', PARAM_NOTAGS);
@@ -47,7 +43,7 @@ class simplehtml_input extends moodleform {
 
         $input_data = new stdClass();
         $input_data->answer = $data->answer;
-        $input_data->forum_id =submit_id();
+        $input_data->forum_id =submit_id($forum_id);
         $input_data->submit_time = time();
         $input_data->user_id = get_current_user_id();
     $DB->insert_record('input_data', $input_data);
@@ -57,13 +53,11 @@ class simplehtml_input extends moodleform {
     function validation($data, $files) {
         return [];
     }
-}
+}*/
 
 // Rest of your code for rendering
 
 
-$all_forum_data = get_all_forum_data();
-$forums = render_all_forum_data($all_forum_data);
 
 
 $templatecontext = array(
