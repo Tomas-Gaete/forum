@@ -52,6 +52,10 @@ $string['submit_button'] = "Send answer";
 $string['cancel_button'] = "cancel";
 $string['final_button'] = "Return to create a forum";
 $string['go_to_end_button'] = "Skip answers and go to the end of the forum";
+$string['skip'] = "View forums";
+$string['fin_title'] = "Forum answer has been submitted succesfully";
+
+
 
 
 

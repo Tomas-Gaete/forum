@@ -52,6 +52,10 @@ $string['submit_button'] = "Enviar respuesta";
 $string['cancel_button'] = "cancelar";
 $string['final_button'] = "Regresar para crear un foro";
 $string['go_to_end_button'] = "Saltar respuesta e ir al final del foro";
+$string['skip'] = "Ver foros";
+$string['fin_title'] = "Se ha enviado la respuesta del foro con exito";
+
+
 
 
 
