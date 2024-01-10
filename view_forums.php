@@ -2,6 +2,8 @@
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
 require_once(__DIR__ . '/locallib.php');
+require_once('../forum/style.css');
+
 //require_once(__DIR__ . '/ajax/submitAnswer.js'); 
 
 global $PAGE, $OUTPUT, $DB;
@@ -71,5 +73,5 @@ $templatecontext = array(
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
 echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
-echo $OUTPUT->single_button($myCustomURL2, get_string('view_button', 'local_forum'));
+echo $OUTPUT->single_button($myCustomURL2, get_string('go_to_end_button', 'local_forum'));
 echo $OUTPUT->footer();

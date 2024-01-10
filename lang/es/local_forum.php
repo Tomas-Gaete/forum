@@ -49,6 +49,10 @@ $string['end_date'] = "Fecha de entrega para la actividad";
 $string['form_intro_view'] = "Introducción";
 $string['input_answer'] = "Ingrese una respuesta";
 $string['submit_button'] = "Enviar respuesta";
+$string['final_button'] = "Regresar para crear un foro";
+$string['go_to_end_button'] = "Saltar respuesta e ir al final del foro";
+
+
 
 
 

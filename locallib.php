@@ -1,5 +1,5 @@
 <?php
-
+require_once('../forum/style.css');
 function get_forum_data_by_id($id) {
     global $DB;
     return $DB->get_record('forum_data', array('id' => $id));
@@ -14,6 +14,7 @@ function get_current_user_id(){
     $user_id = $USER->id;
     return $user_id;
 }
+
 
 /*function get_forum_id($x){
     global $DB;
@@ -71,8 +72,11 @@ class simplehtml_input extends moodleform {
 
 
         $this->add_action_buttons();
+        
         // Set type of element.
     }
+    
+    
     function submit($data_form, $files) {
         // Perform database operations here
         global $DB;

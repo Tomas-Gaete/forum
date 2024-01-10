@@ -17,6 +17,7 @@
 {{/Btn}}
 
 {{#view}}
+<body>
 <div class="container forum-content">
     <h2>{{#str}}view_title, local_forum{{/str}}</h2>
     <br>
@@ -24,17 +25,17 @@
         <div class="row">
             {{#forums}}
             <div class="col-md-4">
-    <div class="card">
-        <div class="card-body">
+    <div class="card" style="background-color: #f5f5f5;">
+        <div class="card-body ">
             <h3 class="card-title forum-title">{{title}}</h3>
             <p class="card-text forum-theme">{{#str}} form_theme, local_forum {{/str}}: {{theme}}</p>
             <p class="card-text forum-intro">{{#str}} form_intro_view, local_forum {{/str}}: {{intro}}</p>
             <p class="card-text forum-criteria">{{#str}} criteria, local_forum {{/str}}: {{criteria}}</p>
             <p class="card-text forum-info">{{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
         </div>
-        <div class="card-footer">
-            <div class="form-group">
-                {{{inputs}}} <!-- Assuming input_form is a property containing the associated form instance -->
+        <div class="answers" style="padding: 20px; background-color: #f5f5f5;">
+            <div class="form-group" style="background-color: #f5f5f5;">
+                {{{inputs}}}
             </div>
         </div>
     </div>
@@ -45,5 +46,6 @@
         </div>
     </div>
 </div>
+</body>
 {{/view}}
 

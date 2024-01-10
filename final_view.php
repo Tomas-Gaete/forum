@@ -14,5 +14,5 @@ $PAGE->set_heading(get_string('create_title', 'local_forum'));
 $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Redirects to course with id 2
 
 echo $OUTPUT->header();
-echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
+echo $OUTPUT->single_button($myCustomURL, get_string('final_button', 'local_forum'));
 echo $OUTPUT->footer();

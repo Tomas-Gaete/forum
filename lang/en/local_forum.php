@@ -49,6 +49,10 @@ $string['end_date'] = "Due date for the activity";
 $string['form_intro_view'] = "Introduction";
 $string['input_answer'] = "Enter an answer";
 $string['submit_button'] = "Send answer";
+$string['final_button'] = "Return to create a forum";
+$string['go_to_end_button'] = "Skip answers and go to the end of the forum";
+
+
 
 
 
