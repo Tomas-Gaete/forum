@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 //$string['forum'] = "instrucciones";
 $string['pluginname'] = "Forum";
-$string['titulo'] = "This is where the content of the forum will be displayed!";
+$string['titulo'] = "Welcome to the moodle plugin for forums: forum!";
 $string['text'] = "This is an example of extra strings for the plugin";
 $string['create_title'] = "Placeholder it should display the name of the course in wich the forum is created";
 $string['B_title'] = "Creating a new forum";
@@ -49,6 +49,7 @@ $string['end_date'] = "Due date for the activity";
 $string['form_intro_view'] = "Introduction";
 $string['input_answer'] = "Enter an answer";
 $string['submit_button'] = "Send answer";
+$string['cancel_button'] = "cancel";
 $string['final_button'] = "Return to create a forum";
 $string['go_to_end_button'] = "Skip answers and go to the end of the forum";
 

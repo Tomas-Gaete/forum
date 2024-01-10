@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 //$string['forum'] = "instrucciones";
 $string['pluginname'] = "Foro";
-$string['titulo'] = "¡Aquí se mostrará el contenido del foro!";
+$string['titulo'] = "¡Bienvenido al plugin de moodle para foros: forum!";
 $string['text'] = "Este es un ejemplo de los textos adicionales para el plugin de foros";
 $string['create_title'] = "Aquí se mostrará el nombre del curso en el que se crea el foro";
 $string['B_title'] = "Creando un nuevo foro";
@@ -49,6 +49,7 @@ $string['end_date'] = "Fecha de entrega para la actividad";
 $string['form_intro_view'] = "Introducción";
 $string['input_answer'] = "Ingrese una respuesta";
 $string['submit_button'] = "Enviar respuesta";
+$string['cancel_button'] = "cancelar";
 $string['final_button'] = "Regresar para crear un foro";
 $string['go_to_end_button'] = "Saltar respuesta e ir al final del foro";
 

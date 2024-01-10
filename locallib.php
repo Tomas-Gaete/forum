@@ -1,5 +1,7 @@
 <?php
-require_once('../forum/style.css');
+
+use core_reportbuilder\external\filters\set;
+
 function get_forum_data_by_id($id) {
     global $DB;
     return $DB->get_record('forum_data', array('id' => $id));
@@ -70,9 +72,12 @@ class simplehtml_input extends moodleform {
         $mform->addElement('hidden', 'user_id', '0');
         $mform->setType('user_id', PARAM_INT); // Set the type to PARAM_INT to ensure it's an integer
 
-
-        $this->add_action_buttons();
+        // Custom submit buttons
         
+        $this->add_action_buttons(true, get_string('submit_button', 'local_forum'));
+
+        // Add CSS style to change the background color
+
         // Set type of element.
     }
     
@@ -89,8 +94,8 @@ class simplehtml_input extends moodleform {
         //die(var_dump($input_data->forum_id)); 
         $input_data->submit_time = time();
         $input_data->user_id = get_current_user_id();
-    $DB->insert_record('input_data', $input_data);
-    redirect(new moodle_url('/local/forum/index.php'));
+        $DB->insert_record('input_data', $input_data);
+        redirect(new moodle_url('/local/forum/index.php'));
     }
     // Custom validation should be added here.
     function validation($data_form, $files) {
