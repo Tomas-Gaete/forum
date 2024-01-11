@@ -9,7 +9,6 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="title" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
         <FIELD NAME="theme" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
-        <!--<FIELD NAME="year" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>-->
         <FIELD NAME="intro" TYPE="char" LENGTH="1000" NOTNULL="true" SEQUENCE="false"/>      
         <FIELD NAME="criteria" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
         <FIELD NAME="info" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
@@ -37,9 +36,3 @@
 
 </TABLES>
 </XMLDB>
-
-<!--    <FIELD NAME="intro" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>      
-        <FIELD NAME="criteria" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
-        <FIELD NAME="info" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>      
-        <FIELD NAME="from" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="to" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>-->

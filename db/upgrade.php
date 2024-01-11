@@ -33,7 +33,7 @@ require_once(__DIR__.'/upgradelib.php');
  * @param int $oldversion
  * @return bool
  */
-function xmldb_local_forum_upgrade($oldversion) {
+function xmldb_local_forum_upgrade($oldversion) { //handles all upgrades to the tables in the database
     global $DB;
 
     $dbman = $DB->get_manager();

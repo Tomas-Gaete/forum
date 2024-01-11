@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_forum';
 $plugin->release = '0.1.0';
-$plugin->version = 2024010803;
+$plugin->version = 2024010803; //change version for upgrades
 $plugin->requires = 2021051700;
 $plugin->maturity = MATURITY_ALPHA;

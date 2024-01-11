@@ -1,4 +1,5 @@
 <!--We create the templates for all the pages and separate them in views so that we can choose wich one to render -->
+<!-- Handle the styles for each view inside them-->
 {{#main}} <!-- index.php -->
 <style>
 p{
@@ -10,7 +11,7 @@ h2{
 </style>
 <div class="content">
 <div class="container text-right" style= "padding= 20px;">
-    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="60" style="border-radius: 100%;">
+    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="65" style="border-radius: 100%;">
 </div>
 <h2>{{#str}} titulo, local_forum {{/str}}</h2>
 
@@ -28,7 +29,7 @@ h2{
 
 <div class="content">
 <div class="container text-right" style= "padding= 20px;">
-    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="60" style="border-radius: 100%;">
+    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="65" style="border-radius: 100%;">
 </div>
 <h2>{{#str}} B_title, local_forum {{/str}}</h2>
 <br>
@@ -39,7 +40,6 @@ h2{
 
 
 {{#view}} <!-- view_forums.php -->
-{{! <link rel="stylesheet" href="../../forum/style.css"> }}
 <style>
 #fgroup_id_buttonar, #fitem_id_submitbutton {
     margin-bottom: 0;
@@ -53,7 +53,7 @@ h2{
 <body>
 <div class="container_forum-content text-justify">
 <div class="container text-right" style= "padding= 20px;">
-    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="60" style="border-radius: 100%;">
+    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="65" style="border-radius: 100%;">
 </div>
     <h2>{{#str}}view_title, local_forum{{/str}}</h2>
     <br>
@@ -70,7 +70,7 @@ h2{
                         <p class="card-text forum-info">{{#str}} bibliography, local_forum {{/str}}: {{info}}</p>
                     </div>
                         <div class="form-group" style=" padding: 20px; background-color: #f5f5f5;">
-                            {{{inputs}}}
+                            {{{inputs}}} <!-- we show the form to be answered-->
                         </div>
         </div>
         <br>
@@ -78,7 +78,8 @@ h2{
         {{/forums}}
     <div class="container text-center"> <!--we display the buttons at the center of the screen -->
     {{{create_button}}} 
-    {{{final_button}}} 
+    {{{final_button}}}
+    {{{go_to_answers}}}  
     </div>
 </div>
 </body>
@@ -88,7 +89,7 @@ h2{
 {{#fin}} <!-- final_view.php -->
 <body>
 <div class="container text-right" style= "padding= 20px;">
-    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="60" style="border-radius: 100%;">
+    <img src="../forum/img/forum_bird.jpeg" alt="bird" width="90" height="65" style="border-radius: 100%;">
 </div>
 <div class="container text-center">
     <img src="../forum/img/sent_answer.jpg" alt="bird_ans" width="300" height="300" style="border-radius: 5%;">
@@ -99,8 +100,41 @@ h2{
     <div>
 <br>
     <div class="container text-center"> <!--we display the buttons at the center of the screen -->
-    {{{return_button}}}  
+    {{{return_button}}}
+    {{{go_to_answers}}}    
     </div>
 </body>
 {{/fin}}
+
+{{#ans}}
+<style>
+
+.card-body.flex-grow-1.overflow-auto{
+    height: 250px;
+}
+</style>
+<div class="forum-list ">
+        <div class="row">
+            {{#answers}} <!-- this view allows us to display the data from the answers how we want-->
+            <div class="col-md-4" style=" min-width: 33.3%;">
+                <div class="card d-flex flex-column" style="background-color: #f5f5f5; height:95%">
+                    <div class="card-body flex-grow-1 overflow-auto">
+                        <!--<h3 class="card-title forum-title">{{answer}}</h3>-->
+                        <p class="card-text forum-answer">{{#str}} answer_mustache, local_forum {{/str}}: {{answer}}</p>
+                        <p class="card-text forum-intro" style="height=100px">{{#str}} forum_id_mustache, local_forum {{/str}}: {{forum_id}}</p>
+                        <p class="card-text forum-user">{{#str}} user_id_mustache, local_forum {{/str}}: {{user}}</p>
+                        <p class="card-text forum-hour">{{#str}} submit_time_mustache, local_forum {{/str}}: {{submit_time}}</p>
+                    </div>
+        </div>
+        <br>
+    </div>
+        {{/answers}}
+    <div class="container text-center"> <!--we display the buttons at the center of the screen -->
+        {{{home_button}}}
+        {{{forums_button}}}  
+  
+    </div>
+        
+
+{{/ans}}
 
