@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = "Forum";
 $string['titulo'] = "Welcome to the moodle plugin for forums: forum!";
-$string['text'] = "This is an example of extra strings for the plugin";
+$string['text'] = "This forum plugin for moodle consist on a first project to learn the tools that moodle presents, this plugin can let the user create forums and/or answer them sending the data to tables created using moodle forms API and the data manipulation API for moodle. <br> <br> With this plugin, users have the capability to not only create forums but also actively participate by posting insightful answers and comments. The structured approach to data storage involves dedicated tables created through the Moodle Forms API, ensuring efficient organization and retrieval of forum-related information. As users contribute to discussions, their input is systematically recorded, allowing for a seamless and enriching educational experience.";
 $string['create_title'] = "Placeholder it should display the name of the course in wich the forum is created";
 $string['B_title'] = "Creating a new forum";
 $string['Button'] = "Create a new forum";

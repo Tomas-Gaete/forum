@@ -13,11 +13,12 @@ $PAGE->set_heading(get_string('create_title', 'local_forum'));
 
 $myCustomURL = new moodle_url('/local/forum/index.php'); // array('id' => 2) Redirects to course with id 2
 
+$return_button = $OUTPUT->single_button($myCustomURL, get_string('final_button', 'local_forum'));
+
 $templatecontext = array(
     'fin' => true,
-    
+    'return_button' => $return_button //we send the data from the button
 );
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
-echo $OUTPUT->single_button($myCustomURL, get_string('final_button', 'local_forum'));
 echo $OUTPUT->footer();

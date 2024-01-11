@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = "Foro";
 $string['titulo'] = "¡Bienvenido al plugin de moodle para foros: forum!";
-$string['text'] = "Este es un ejemplo de los textos adicionales para el plugin de foros";
+$string['text'] = "This forum plugin for moodle consist on a first project to learn the tools that moodle presents, this plugin can let the user create forums and/or answer them sending the data to tables created using moodle forms API and the data manipulation API for moodle. <br> <br> With this plugin, users have the capability to not only create forums but also actively participate by posting insightful answers and comments. The structured approach to data storage involves dedicated tables created through the Moodle Forms API, ensuring efficient organization and retrieval of forum-related information. As users contribute to discussions, their input is systematically recorded, allowing for a seamless and enriching educational experience.";
 $string['create_title'] = "Aquí se mostrará el nombre del curso en el que se crea el foro";
 $string['B_title'] = "Creando un nuevo foro";
 $string['Button'] = "Crear un nuevo foro";
@@ -52,7 +52,7 @@ $string['cancel_button'] = "cancelar";
 $string['final_button'] = "Regresar para crear un foro";
 $string['go_to_end_button'] = "Saltar respuesta e ir al final del foro";
 $string['skip'] = "Ver foros";
-$string['fin_title'] = "Se ha enviado la respuesta del foro con exito";
+$string['fin_title'] = "Se ha enviado la respuesta del foro con éxito";
 
 
 
