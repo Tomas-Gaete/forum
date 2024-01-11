@@ -2,7 +2,6 @@
 require_once('../../config.php');
 require_once("$CFG->libdir/formslib.php");
 require_once(__DIR__ . '/locallib.php');
-require_once(__DIR__ . '/styles.css');
 
 
 //require_once(__DIR__ . '/ajax/submitAnswer.js'); 
