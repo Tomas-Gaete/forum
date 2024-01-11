@@ -1,8 +1,10 @@
 # forum #
 
-TODO Describe the plugin shortly here.
+Este complemento Forum para Moodle consiste en un primer proyecto para aprender las herramientas que Moodle presenta. Este complemento permite al usuario crear foros y/o responder a ellos enviando los datos a tablas creadas utilizando la API de formularios de Moodle y la API de manipulación de datos para Moodle.
 
-TODO Provide more detailed description here.
+ Con este complemento, los usuarios tienen la capacidad de no solo crear foros, sino también participar activamente publicando respuestas y comentarios perspicaces. El enfoque estructurado para el almacenamiento de datos implica tablas dedicadas creadas a través de la API de formularios de Moodle, lo que garantiza una organización y recuperación eficientes de la información relacionada con el foro. A medida que los usuarios contribuyen a las discusiones, su aporte se registra sistemáticamente, lo que permite una experiencia educativa fluida y enriquecedora. 
+
+Únete a nosotros para aprovechar las capacidades de este complemento de foro de Moodle, mientras continuamos explorando las posibilidades de la tecnología educativa y creamos una comunidad vibrante de estudiantes y educadores. Participa, aprende y crece con las características innovadoras que ofrece este complemento, mientras nos esforzamos por aprovechar al máximo el rico ecosistema de Moodle para el aprendizaje colaborativo.
 
 ## Installing via uploaded ZIP file ##
 
