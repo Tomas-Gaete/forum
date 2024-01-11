@@ -21,19 +21,18 @@ $myCustomURL2 = new moodle_url('/local/forum/final_view.php'); // array('id' => 
 $all_forum_data = get_all_forum_data();
 $forums = render_all_forum_data($all_forum_data);
 
+$create_button = $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
+$final_button = $OUTPUT->single_button($myCustomURL2, get_string('go_to_end_button', 'local_forum'));
 
 
 
-$templatecontext = array(
+$templatecontext = array( //we declare wich views we want to render from mustache
     'view' => true,
-    'forums' => $forums,
-    
+    'forums' => $forums, // we set the data for the forums to be rendered
+    'create_button' => $create_button, //we send the data from the buttons to the template
+    'final_button' => $final_button
 );
 
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
-echo '<div class="container text-center">';
-echo $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
-echo $OUTPUT->single_button($myCustomURL2, get_string('go_to_end_button', 'local_forum'));
-echo '</div>';
 echo $OUTPUT->footer();

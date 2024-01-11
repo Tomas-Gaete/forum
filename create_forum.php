@@ -77,7 +77,7 @@ if ($mform->is_cancelled()) {
 }
 
 $templatecontext = array(
-    'Btn' => true,
+    'Create' => true,
 );
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template('local_forum/app', $templatecontext);
