@@ -47,7 +47,6 @@ function render_all_forum_data($all_data) {
     }
         return $forums;
 }
-
 class simplehtml_form extends moodleform {
     // Add elements to form.
     public function definition() {
@@ -101,7 +100,6 @@ class simplehtml_form extends moodleform {
         return [];
     }
 }
-
 class simplehtml_input extends moodleform {
     // Add elements to the form.
     public function definition() {
@@ -117,7 +115,6 @@ class simplehtml_input extends moodleform {
         //Add  action buttons 
         $this->add_action_buttons(true, get_string('submit_button', 'local_forum'));
     }
-    
     
     function submit($data_form, $files) {
         // set the data to the desired values and insert it to the (mdl_) input_data table

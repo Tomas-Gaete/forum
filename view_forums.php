@@ -14,17 +14,12 @@ $myCustomURL = new moodle_url('/local/forum/index.php');
 $myCustomURL2 = new moodle_url('/local/forum/final_view.php');  
 $myCustomURL3 = new moodle_url('/local/forum/view_answers.php');  
 
-
-
 $all_forum_data = get_all_forum_data();
 $forums = render_all_forum_data($all_forum_data);
 
 $create_button = $OUTPUT->single_button($myCustomURL, get_string('view_button', 'local_forum'));
 $final_button = $OUTPUT->single_button($myCustomURL2, get_string('go_to_end_button', 'local_forum'));
 $answers_button = $OUTPUT->single_button($myCustomURL3, get_string('go_to_answers', 'local_forum'));
-
-
-
 
 $templatecontext = array( //we declare wich views we want to render from mustache
     'view' => true,

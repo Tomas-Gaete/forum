@@ -59,21 +59,3 @@ $string['user_id_mustache'] = "usuario";
 $string['submit_time_mustache'] = "Hora de entrega:";
 $string['go_to_answers'] = "Ver respuestas";
 $string['answer_again'] = "Responder otro foro";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

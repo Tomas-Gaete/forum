@@ -16,7 +16,6 @@ $myCustomURL2 = new moodle_url('/local/forum/view_answers.php'); //link to main 
 $return_button = $OUTPUT->single_button($myCustomURL, get_string('final_button', 'local_forum'));
 $answers_button = $OUTPUT->single_button($myCustomURL2, get_string('go_to_answers', 'local_forum'));
 
-
 $templatecontext = array(
     'fin' => true,
     'return_button' => $return_button, //we send the data from the button
