@@ -1,6 +1,5 @@
 <?php
 
-use core_reportbuilder\external\filters\set;
 
 function get_forum_data_by_id($id) {
     global $DB;
@@ -18,12 +17,6 @@ function get_current_user_id(){
 }
 
 
-/*function get_forum_id($x){
-    global $DB;
-    $forum_id = $x;
-    return $forum_id;
-}*/
-
 function render_all_forum_data($all_data) {
     $forums = [];
 
@@ -38,17 +31,15 @@ function render_all_forum_data($all_data) {
                 'id' => htmlspecialchars($data->id),
                 'forum_id' => $data->id
             ];
-            $forum_id = $data->id;
-            // Assuming simplehtml_input is a form class
+            
             $to_form = array('my_array' => array('id' => $forum['forum_id'])); 
             $mform = new simplehtml_input(null,$to_form);
 
             if ($mform->is_cancelled()) {
-                // Handle cancellation
+                //
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             } elseif ($data_form = $mform->get_data()) {
-                // Handle form submission data_form
-                // You can process the form data_form here 
+                
                 $mform->submit($data_form, null);
                 redirect(new moodle_url('/local/forum/index.php')); // Redirect to the main page, adjust the URL as needed
             }

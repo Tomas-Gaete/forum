@@ -25,7 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-//$string['forum'] = "instrucciones";
 $string['pluginname'] = "Foro";
 $string['titulo'] = "¡Bienvenido al plugin de moodle para foros: forum!";
 $string['text'] = "Este es un ejemplo de los textos adicionales para el plugin de foros";
@@ -62,7 +61,6 @@ $string['fin_title'] = "Se ha enviado la respuesta del foro con exito";
 
 
 
-//$string['form_id'] = "Add the id number of the forum";
 
 
 
