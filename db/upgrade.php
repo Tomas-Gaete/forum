@@ -151,6 +151,37 @@ function xmldb_local_forum_upgrade($oldversion) { //handles all upgrades to the 
         // Forum savepoint reached.
         upgrade_plugin_savepoint(true, 2024010803, 'local', 'forum');
     }
+    
+    if ($oldversion < 2024011200) {
+
+        // Define field user_name to be added to input_data.
+        $table = new xmldb_table('input_data');
+        $field = new xmldb_field('user_name', XMLDB_TYPE_CHAR, '20', null, XMLDB_NOTNULL, null, 'default name', 'user_id');
+
+        // Conditionally launch add field user_name.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024011200, 'local', 'forum');
+    }
+    if ($oldversion < 2024011201) {
+
+        // Define field forum_name to be added to input_data.
+        $table = new xmldb_table('input_data');
+        $field = new xmldb_field('forum_name', XMLDB_TYPE_CHAR, '45', null, XMLDB_NOTNULL, null, 'default', 'user_name');
+
+        // Conditionally launch add field forum_name.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024011201, 'local', 'forum');
+    }
+
+
 
 
 

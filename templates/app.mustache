@@ -1,5 +1,7 @@
 <!--We create the templates for all the pages and separate them in views so that we can choose wich one to render -->
+
 <!-- Handle the styles for each view inside them-->
+
 {{#main}} <!-- index.php -->
 <style>
 p{
@@ -120,10 +122,12 @@ h2{
                 <div class="card d-flex flex-column" style="background-color: #f5f5f5; height:95%">
                     <div class="card-body flex-grow-1 overflow-auto">
                         <!--<h3 class="card-title forum-title">{{answer}}</h3>-->
-                        <p class="card-text forum-answer">{{#str}} answer_mustache, local_forum {{/str}}: {{answer}}</p>
-                        <p class="card-text forum-intro" style="height=100px">{{#str}} forum_id_mustache, local_forum {{/str}}: {{forum_id}}</p>
-                        <p class="card-text forum-user">{{#str}} user_id_mustache, local_forum {{/str}}: {{user}}</p>
-                        <p class="card-text forum-hour">{{#str}} submit_time_mustache, local_forum {{/str}}: {{submit_time}}</p>
+                        <p class="card-text input-answer">{{#str}} answer_mustache, local_forum {{/str}}: {{answer}}</p>
+                        <p class="card-text forum-name" style="height=100px">{{#str}} forum_name_mustache, local_forum {{/str}}: {{forum_name}}</p>
+                        <p class="card-text forum-id" style="height=100px">{{#str}} forum_id_mustache, local_forum {{/str}}: {{forum_id}}</p>
+                        <p class="card-text input-user-name">{{#str}} user_name_mustache, local_forum {{/str}}: {{user_name}}</p>
+                        <p class="card-text input-user">{{#str}} user_id_mustache, local_forum {{/str}}: {{user}}</p>
+                        <p class="card-text input-hour">{{#str}} submit_time_mustache, local_forum {{/str}}: {{submit_time}}</p>
                     </div>
         </div>
         <br>

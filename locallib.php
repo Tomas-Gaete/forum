@@ -4,6 +4,12 @@ function get_all_forum_data() {
     global $DB;
     return $DB->get_records('forum_data');
 }
+function get_title_forum_data($id) {
+    global $DB;
+    $record = $DB->get_record('forum_data', array('id' => $id));
+    $record_title = $record->title;
+    return $record_title;
+}
 function get_all_input_data() {
     global $DB;
     return $DB->get_records('input_data');
@@ -13,7 +19,11 @@ function get_current_user_id(){
     $user_id = $USER->id;
     return $user_id;
 }
-
+function get_current_user_name(){
+    global $USER;
+    $user_name = $USER->username; //you can also get firstname and lastname with tha USER objects
+    return $user_name;
+}
 function render_all_forum_data($all_data) {
     $forums = [];
 
@@ -57,22 +67,18 @@ class simplehtml_form extends moodleform {
         // Add elements to your form.
         $mform->addElement('text', 'title', get_string('form_title', 'local_forum'));
         $mform->addElement('text', 'theme', get_string('form_theme', 'local_forum'));
-        //$mform->addHelpButton('theme', 'form_theme_help', 'local_forum');//no crear obligación pq aun no sirve el manejo de los datos
-        //$mform->addRule('theme', get_string('required'), 'required', null, 'client');
         $mform->addElement('textarea', 'introduction', get_string('form_intro', 'local_forum'), 'wrap="virtual" rows="10" cols="10"');
         $mform->addElement('text', 'crit', get_string('criteria', 'local_forum'));
         $mform->addElement('text', 'info', get_string('bibliography', 'local_forum'));
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('start_date','local_forum'));
         $mform->addElement('date_time_selector', 'assesstimefinish', get_string('end_date','local_forum'));
         $mform->addElement('filepicker', 'attachment', get_string('form_archive', 'local_forum'), null, array('accepted_types' => '*'));
+        $mform->addRule('title', get_string('required'), 'required', null, 'client');
+        $mform->addRule('theme', get_string('required'), 'required', null, 'client');
+        $mform->addRule('assesstimefinish', get_string('required'), 'required', null, 'client');
+        $this->add_action_buttons();
         
 
-        //$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
-
-        //$mform->addElement('button', 'intro', get_string('form_Btn', 'local_forum'));
-
-        $this->add_action_buttons();
-        // Set type of element.
     }
     function submit($data, $files) {
         // Perform database operations here
@@ -112,6 +118,9 @@ class simplehtml_input extends moodleform {
         $mform->setType('submit_time', PARAM_INT);
         $mform->addElement('hidden', 'user_id', '0');
         $mform->setType('user_id', PARAM_INT);
+        $mform->addElement('hidden', 'user_name', 'default name');
+        $mform->addElement('hidden', 'forum_name', 'default');
+
         //Add  action buttons 
         $this->add_action_buttons(true, get_string('submit_button', 'local_forum'));
     }
@@ -124,6 +133,8 @@ class simplehtml_input extends moodleform {
         $input_data->forum_id = $data_form->forum_id;
         $input_data->submit_time = time();
         $input_data->user_id = get_current_user_id();
+        $input_data->user_name = get_current_user_name();
+        $input_data->forum_name = get_title_forum_data($data_form->forum_id);
         $DB->insert_record('input_data', $input_data);
     }
     // If necesary custom validation can be added here
@@ -139,7 +150,9 @@ function render_all_input_data($all_data) {
             $input = [
                 'answer' => htmlspecialchars($data->answer),//save all the data needed from forum_data table
                 'forum_id' => htmlspecialchars($data->forum_id),
+                'forum_name' => htmlspecialchars($data->forum_name),
                 'submit_time' => htmlspecialchars(gmdate("Y-m-d\ T H:i:s", $data->submit_time)),
+                'user_name' => htmlspecialchars($data->user_name),
                 'user' => htmlspecialchars($data->user_id),
             ];
             

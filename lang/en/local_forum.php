@@ -54,11 +54,15 @@ $string['go_to_end_button'] = "Skip answers and go to the end of the forum";
 $string['skip'] = "View forums";
 $string['fin_title'] = "Forum answer has been submitted succesfully!!!";
 $string['answer_mustache'] = "answer";
-$string['forum_id_mustache'] = "forum answered";
+$string['forum_id_mustache'] = "forum id";
 $string['user_id_mustache'] = "user";
 $string['submit_time_mustache'] = "time of submission:";
 $string['go_to_answers'] = "See answers";
 $string['answer_again'] = "Answer another forum";
+$string['user_name_mustache'] = "User name";
+$string['forum_name_mustache'] = "forum answered";
+
+
 
 
 

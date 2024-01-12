@@ -54,8 +54,11 @@ $string['go_to_end_button'] = "Saltar respuesta e ir al final del foro";
 $string['skip'] = "Ver foros";
 $string['fin_title'] = "¡¡¡Se ha enviado la respuesta del foro con éxito!!!";
 $string['answer_mustache'] = "respuesta";
-$string['forum_id_mustache'] = "foro respondido";
+$string['forum_id_mustache'] = "id del foro";
 $string['user_id_mustache'] = "usuario";
 $string['submit_time_mustache'] = "Hora de entrega:";
 $string['go_to_answers'] = "Ver respuestas";
 $string['answer_again'] = "Responder otro foro";
+$string['user_name_mustache'] = "Nombre del usuario";
+$string['forum_name_mustache'] = "foro respondido";
+
