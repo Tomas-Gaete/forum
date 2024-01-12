@@ -19,6 +19,12 @@ function get_current_user_id(){
     $user_id = $USER->id;
     return $user_id;
 }
+function get_file($file) {
+    $fs = get_file_storage();
+    $file_object = $fs->get_file($file->get_contextid(), $file->get_component(), $file->get_filearea(), $file->get_itemid(), $file->get_filepath(), $file->get_filename());
+    $content = $file_object->get_content();
+    return $content;
+}
 function get_current_user_name(){
     global $USER;
     $user_name = $USER->username; //you can also get firstname and lastname with tha USER objects
@@ -38,7 +44,7 @@ function render_all_forum_data($all_data) {
                 'id' => htmlspecialchars($data->id),
                 'forum_id' => $data->id
             ];
-            
+            $forum['file'] = base64_decode($data->file);
             $to_form = array('my_array' => array('id' => $forum['forum_id'])); 
             $mform = new simplehtml_input(null,$to_form);
 
@@ -102,7 +108,7 @@ class simplehtml_form extends moodleform {
         $forum_data->intro = $data->introduction;
         $forum_data->criteria = $data->crit;
         $forum_data->info = $data->info;
-        $forum_data->file = $data->file;
+        $forum_data->file = base64_encode($data->file);
         $forum_data->start_date = $data->assesstimestart;
         $forum_data->end_date = $data->assesstimefinish;
         $forum_data->user_id = get_current_user_id();

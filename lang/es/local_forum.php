@@ -61,4 +61,6 @@ $string['go_to_answers'] = "Ver respuestas";
 $string['answer_again'] = "Responder otro foro";
 $string['user_name_mustache'] = "Nombre del usuario";
 $string['forum_name_mustache'] = "foro respondido";
+$string['mustache_files'] = "Archivos subidos";
+
 

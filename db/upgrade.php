@@ -181,6 +181,22 @@ function xmldb_local_forum_upgrade($oldversion) { //handles all upgrades to the 
         upgrade_plugin_savepoint(true, 2024011201, 'local', 'forum');
     }
 
+    if ($oldversion < 2024011202) {
+
+        // Define field file to be added to forum_data.
+        $table = new xmldb_table('forum_data');
+        $field = new xmldb_field('file', XMLDB_TYPE_CHAR, '1333', null, XMLDB_NOTNULL, null, 'No_files', 'end_date');
+
+        // Conditionally launch add field file.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Forum savepoint reached.
+        upgrade_plugin_savepoint(true, 2024011202, 'local', 'forum');
+    }
+
+
 
 
 
