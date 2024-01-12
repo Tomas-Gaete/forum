@@ -72,7 +72,17 @@ class simplehtml_form extends moodleform {
         $mform->addElement('text', 'info', get_string('bibliography', 'local_forum'));
         $mform->addElement('date_time_selector', 'assesstimestart', get_string('start_date','local_forum'));
         $mform->addElement('date_time_selector', 'assesstimefinish', get_string('end_date','local_forum'));
-        $mform->addElement('filepicker', 'attachment', get_string('form_archive', 'local_forum'), null, array('accepted_types' => '*'));
+        $mform->addElement(
+            'filepicker',
+            'file',
+            get_string('file'),
+            null,
+            [
+                'maxbytes' => 100000,
+                'accepted_types' => '*',
+            ]
+        );
+
         $mform->addRule('title', get_string('required'), 'required', null, 'client');
         $mform->addRule('theme', get_string('required'), 'required', null, 'client');
         $mform->addRule('assesstimefinish', get_string('required'), 'required', null, 'client');
@@ -92,7 +102,7 @@ class simplehtml_form extends moodleform {
         $forum_data->intro = $data->introduction;
         $forum_data->criteria = $data->crit;
         $forum_data->info = $data->info;
-        //$forum_data->archive = $data->info;
+        $forum_data->file = $data->file;
         $forum_data->start_date = $data->assesstimestart;
         $forum_data->end_date = $data->assesstimefinish;
         $forum_data->user_id = get_current_user_id();
